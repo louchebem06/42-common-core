@@ -1,0 +1,344 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index.css                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bledda <bledda@student.42nice.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/16 01:02:26 by bledda            #+#    #+#             */
+/*   Updated: 2021/05/16 15:08:59 by bledda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+	General settings
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,700);
+
+*
+{
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+a
+{
+	color: currentColor;
+	text-decoration: none;
+}
+
+body
+{
+	background-color: black;
+	overflow: hidden;
+}
+
+/*
+	message Responsive
+*/
+.visible
+{
+	display: none;
+}
+
+/*
+	Responsive
+*/
+@media (max-width: 1320px)
+{
+	.body-imac
+	{
+		display: none !important;
+	}
+	.visible
+	{
+		display: contents !important;
+		text-align: center !important;
+		color: white;
+	}
+}
+
+@media (max-height: 775px)
+{
+	.eye
+	{
+		display: none !important;
+	}
+
+	.body-imac
+	{
+		background-color: black !important;
+		padding-top: 0 !important;
+		margin-top: 0 !important;
+	}
+
+	.imac
+	{
+		border-radius: 10px 10px 10px 10px !important;
+		margin-top: 0 !important;
+	}
+
+	.end-imac
+	{
+		background-color: black !important;
+	}
+}
+
+@media (max-height: 736px)
+{
+	.imac
+	{
+		margin-top: -15px !important;
+	}
+}
+
+@media (max-height: 720px)
+{
+	.body-imac
+	{
+		display: none !important;
+	}
+	.visible
+	{
+		display: contents !important;
+		text-align: center !important;
+		color: white;
+	}
+}
+
+/*
+	Content iMac
+*/
+.body-imac
+{
+	width: 1320px;
+	height: 760px;
+	margin: auto;
+	background-color: white;
+	border-radius: 10px 10px 0 0;
+	padding-top: 5px;
+	margin-top: 10px;
+	z-index: 2;
+	position: relative;
+}
+
+/*
+	Footer iMac
+*/
+.end-imac
+{
+	width: 1320px;
+	height: 150px;
+	border-radius: 0 0 20px 20px;
+	background-color: #B5E0F0;
+	z-index: 10;
+	position: relative;
+}
+
+.end-imac img
+{
+	width: 50px;
+	display: block;
+	margin: auto;
+	padding-top: 30px;
+}
+
+/*
+	Webcam
+*/
+.eye
+{
+	background-color: black;
+	border-radius: 10px;
+	height: 10px;
+	width: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+/*
+	Setting screen iMac
+*/
+.imac
+{
+	width: 1280px;
+	height: 720px;
+	background-image: url(../img/bg-mac-os-big-sur.jpg);
+	background-size: 100%;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	z-index: 10;
+	position: relative;
+}
+
+
+/*
+	CLI
+*/
+.console
+{
+	width: 720px;
+	height: 100%;
+	cursor: move;
+	position: absolute;
+	z-index: 0;
+	visibility: hidden;
+	-webkit-filter: blur(0px);
+}
+
+.top-bar, .end-bar
+{
+	width: 100%;
+	height: 30px;
+	background-color: #434647;
+	display: inline-block;
+}
+
+.top-bar
+{
+	border-radius: 10px 10px 0 0;
+}
+
+.end-bar
+{
+	border-radius: 0 0 10px 10px;
+}
+
+
+.top-bar p, .end-bar p
+{
+	line-height: 30px;
+}
+
+.top-bar p
+{
+	margin-left: 15px;
+}
+
+.end-bar p
+{
+	text-align: center;
+}
+
+.corp
+{
+	width: 100%;
+}
+
+.left
+{
+	width: 6%;
+	height: 405px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: black;
+	opacity: 60%;
+	float: left;
+}
+
+.body
+{
+	opacity: 50%;
+	background-color: black;
+	width: 94%;
+	float: right;
+	height: 405px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.left-text p, .body-text p, .body-text pre
+{
+	color: white;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.body-text p, .body-text pre, .body-text span
+{
+	padding-top: 4px;
+	text-align: left;
+	line-height: 15px;
+	margin-left: 10px
+}
+
+/*
+	Button windows
+*/
+.btn
+{
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	float: right;
+	display: block;
+	margin-right: 10px;
+	margin-top: 7px;
+}
+
+/*
+	Color button windows
+*/
+.yellow
+{
+	background-color: yellow;
+}
+
+.red
+{
+	background-color: red;
+	cursor: pointer;
+}
+
+.green
+{
+	background-color: green;
+}
+
+/*
+	Syntac color php
+*/
+.color-red
+{
+	color: red;
+}
+
+.color-blue
+{
+	color: #00B9FF;
+}
+
+.color-yellow
+{
+	color: yellow;
+}
+
+/*
+	Logo Apple iMac
+*/
+.logo
+{
+	width: 50px;
+	height: 50px;
+	padding: 15px;
+	margin: 15px;
+	cursor: pointer;
+}
+
+.logo img
+{
+	width: 50px;
+	height: 50px;
+}
+
+.logo p
+{
+	color: white;
+	text-align: center;
+}

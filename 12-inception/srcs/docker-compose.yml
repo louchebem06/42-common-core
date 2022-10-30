@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
     nginx:
@@ -16,6 +16,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: nginx
 
     wordpress:
         depends_on:
@@ -33,6 +34,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: wordpress
 
     mariadb:
         container_name: mariadb
@@ -52,6 +54,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: mariadb
 
     redis:
         container_name: redis
@@ -69,6 +72,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: redis
 
     ftp:
         container_name: ftp
@@ -87,6 +91,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: ftp
 
     website:
         depends_on:
@@ -101,6 +106,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: website
 
     adminer:
         depends_on:
@@ -115,6 +121,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: adminer
 
     git:
         container_name: git
@@ -127,6 +134,7 @@ services:
         networks:
             - bledda-network
         restart: always
+        hostname: git
 
 networks:
     bledda-network:
