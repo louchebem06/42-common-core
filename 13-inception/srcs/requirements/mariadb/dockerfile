@@ -1,0 +1,23 @@
+FROM	debian:buster
+
+ARG		DB_WP
+ARG		MYSQL_USER
+ARG		MYSQL_PASSWORD
+
+RUN		apt-get update -y \
+			&& apt-get upgrade -y
+
+RUN 	apt-get install -y \
+			mariadb-server
+
+COPY	conf/wordpress.sql /
+
+COPY	tools/setup.sh /
+
+RUN		./setup.sh && rm -f setup.sh
+
+COPY	conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+
+EXPOSE 	3306
+
+CMD		["mysqld"]

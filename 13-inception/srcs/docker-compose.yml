@@ -1,0 +1,167 @@
+version: "3.8"
+
+services:
+    nginx:
+        depends_on:
+            - wordpress
+        container_name: nginx
+        build: requirements/nginx
+        image: nginx
+        env_file:
+            - .env
+        ports:
+            - "443:443"
+        volumes:
+            - wordpress:/var/www/wordpress/
+        networks:
+            - bledda-network
+        restart: always
+
+    wordpress:
+        depends_on:
+            - mariadb
+            - redis
+        container_name: wordpress
+        build: requirements/wordpress
+        image: wordpress
+        env_file:
+            - .env
+        expose:
+            - "9000"
+        volumes:
+            - wordpress:/var/www/wordpress
+        networks:
+            - bledda-network
+        restart: always
+
+    mariadb:
+        container_name: mariadb
+        build:
+            context:  requirements/mariadb
+            args:
+                DB_WP: ${DB_WP}
+                MYSQL_USER: ${MYSQL_USER}
+                MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        image: mariadb
+        env_file:
+            - .env
+        expose:
+            - "3306"
+        volumes:
+            - mariadb:/var/lib/mysql/${DB_WP}
+        networks:
+            - bledda-network
+        restart: always
+
+    redis:
+        container_name: redis
+        build:
+            context:  requirements/bonus/redis
+            args:
+                REDIS_PASSWORD: ${REDIS_PASSWORD}
+        image: redis
+        env_file:
+            - .env
+        expose:
+            - "6379"
+        volumes:
+            - redis:/var/lib/redis/
+        networks:
+            - bledda-network
+        restart: always
+
+    ftp:
+        container_name: ftp
+        build:
+            context: requirements/bonus/ftp
+            args:
+                FTP_USER: ${FTP_USER}
+                FTP_PASSWORD: ${FTP_PASSWORD}
+        env_file:
+            - .env
+        image: ftp
+        ports:
+            - "21:21"
+        volumes:
+            - wordpress:/var/www/wordpress/
+        networks:
+            - bledda-network
+        restart: always
+
+    website:
+        depends_on:
+            - nginx
+        container_name: website
+        build: requirements/bonus/website
+        image: website
+        env_file:
+            - .env
+        expose:
+            - "8080"
+        networks:
+            - bledda-network
+        restart: always
+
+    adminer:
+        depends_on:
+            - nginx
+        container_name: adminer
+        build: requirements/bonus/adminer
+        image: adminer
+        env_file:
+            - .env
+        expose:
+            - "8080"
+        networks:
+            - bledda-network
+        restart: always
+
+    git:
+        container_name: git
+        build: requirements/bonus/git
+        image: git
+        ports:
+            - "22:22"
+        volumes:
+            - git:/home/
+        networks:
+            - bledda-network
+        restart: always
+
+networks:
+    bledda-network:
+        name: bledda-network
+        driver: bridge
+
+volumes:
+    wordpress:
+        name: wordpress
+        driver: local
+        driver_opts:
+            type: none  
+            o: bind
+            device: /home/bledda/data/wp-data
+
+    mariadb:
+        name: mariadb
+        driver: local
+        driver_opts:
+            type: none  
+            o: bind
+            device: /home/bledda/data/db-data
+
+    git:
+        name: git
+        driver: local
+        driver_opts:
+            type: none  
+            o: bind
+            device: /home/bledda/data/git-data
+
+    redis:
+        name: redis
+        driver: local
+        driver_opts:
+            type: none  
+            o: bind
+            device: /home/bledda/data/redis-data

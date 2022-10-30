@@ -1,0 +1,22 @@
+FROM	debian:buster
+
+RUN		apt-get update -y \
+			&& apt-get upgrade -y
+
+RUN		apt-get install -y \
+			redis-server
+
+ARG		REDIS_PASSWORD
+
+COPY 	conf/redis.conf /etc/redis/redis.conf
+WORKDIR /etc/redis
+RUN		echo requirepass $REDIS_PASSWORD >> /etc/redis/redis.conf
+RUN 	chmod 644 redis.conf
+
+RUN		chown -R redis:redis /var/log/redis
+RUN		chmod -R 770 /var/log/redis
+
+EXPOSE	6379
+
+ENTRYPOINT	["redis-server"]
+CMD 		["redis.conf"]
