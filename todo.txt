@@ -1,5 +1,3 @@
-04-ft_server:
-	- FIX certificat SSL
 12-inception:
 	- ADD in file repo CV-42Project
 13-webserv:
