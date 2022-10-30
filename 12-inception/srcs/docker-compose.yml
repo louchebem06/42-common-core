@@ -140,7 +140,7 @@ volumes:
         driver_opts:
             type: none  
             o: bind
-            device: /home/bledda/data/wp-data
+            device: $HOME/data/wp-data
 
     mariadb:
         name: mariadb
@@ -148,7 +148,7 @@ volumes:
         driver_opts:
             type: none  
             o: bind
-            device: /home/bledda/data/db-data
+            device: $HOME/data/db-data
 
     git:
         name: git
@@ -156,7 +156,7 @@ volumes:
         driver_opts:
             type: none  
             o: bind
-            device: /home/bledda/data/git-data
+            device: $HOME/data/git-data
 
     redis:
         name: redis
@@ -164,4 +164,4 @@ volumes:
         driver_opts:
             type: none  
             o: bind
-            device: /home/bledda/data/redis-data
+            device: $HOME/data/redis-data

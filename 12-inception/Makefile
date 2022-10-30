@@ -2,11 +2,11 @@ all:	build start
 .PHONY: all
 
 init:
-		@mkdir -p /home/bledda/data/wp-data/
-		@mkdir -p /home/bledda/data/db-data/
-		@mkdir -p /home/bledda/data/git-data/
-		@mkdir -p /home/bledda/data/redis-data/
-		@rm -rf /home/bledda/.ssh/known_hosts
+		@mkdir -p ${HOME}/data/wp-data/
+		@mkdir -p ${HOME}/data/db-data/
+		@mkdir -p ${HOME}/data/git-data/
+		@mkdir -p ${HOME}/data/redis-data/
+		@rm -rf ${HOME}/.ssh/known_hosts
 .PHONY: init
 
 build:	init
@@ -45,7 +45,7 @@ rmv:
 .PHONY: rmv
 
 rmf:
-		@sudo rm -rf ~/data
+		@sudo rm -rf ${HOME}/data
 .PHONY: rmf
 
 fclean:	down rmi rmv rmf
