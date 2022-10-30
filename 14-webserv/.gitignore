@@ -1,0 +1,7 @@
+bin/
+webserv
+.vscode
+src/main
+siege
+www/cgi/upload/*
+!www/cgi/upload/.gitkeep
