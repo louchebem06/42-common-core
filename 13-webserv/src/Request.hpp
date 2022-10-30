@@ -48,6 +48,7 @@ class Request {
 			std::string line;
 			std::stringstream	ss(chunkedData);
 			size_t length = 0;
+			(void)length; // fix warn not usem using in linge 70
 
 			std::getline(ss, line);
 			size_t chunkSize = strtol(line.c_str(), NULL, 16);
