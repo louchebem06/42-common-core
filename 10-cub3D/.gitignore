@@ -7,3 +7,4 @@ base24-osx/intel/
 mlx_mac/*.swiftdoc
 mlx_mac/*.swiftmodule
 !10-cub3D/base24-osx/libbass.dylib
+./*.dylib
