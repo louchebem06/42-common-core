@@ -1,0 +1,10 @@
+.DS_Store
+.vscode/
+*.o
+cub3D
+base24-osx/arm64/
+base24-osx/intel/
+*.a
+*.dylib
+mlx_mac/*.swiftdoc
+mlx_mac/*.swiftmodule

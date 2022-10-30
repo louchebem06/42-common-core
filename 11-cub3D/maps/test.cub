@@ -1,0 +1,16 @@
+SO ./texture/Test/metal.xpm
+WE ./texture/Test/pebbles.xpm
+EA ./texture/Test/wood.xpm
+F 255,100,0
+C 225,255,255
+NO ./texture/Test/brick.xpm
+
+111111111
+100000001
+1001P1001
+100090001
+1000p0009
+100090001
+100000001
+1000N0001
+111111111
