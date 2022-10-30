@@ -4,3 +4,8 @@
 */push_swap
 */client
 */server
+*.dylib
+*.swiftdoc
+*.swiftmodule
+*.swiftsourceinfo
+*/so_long
