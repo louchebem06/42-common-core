@@ -1,4 +1,2 @@
-12-inception:
-	- ADD in file repo CV-42Project
 13-webserv:
 	- fix build
