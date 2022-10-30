@@ -1,0 +1,59 @@
+version: '3.1'
+
+services:
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:14.2-alpine
+    env_file: [.env]
+    # ports:
+    #   - 5432:5432 # TODO remove for prod
+    volumes:
+      - ./achievement.sql:/docker-entrypoint-initdb.d/achievement.sql
+      - ./postgres-data:/var/lib/postgresql/data
+    networks: [transcendence-network]
+    restart: always
+
+  nestjs:
+    depends_on: [postgres]
+    container_name: nestjs
+    hostname: nestjs
+    image: nestjs
+    build: ./nestjs
+    env_file: [.env]
+    ports:
+      - 3001:3001 # (websocket)
+      # - 3000:3000 # TODO remove for prod
+    volumes:
+      - ./nestjs:/var/nestjs
+    networks: [transcendence-network]
+    restart: always
+
+  sapper:
+    depends_on: [nestjs]
+    container_name: sapper
+    hostname: sapper
+    image: sapper
+    build: ./sapper
+    env_file: [.env]
+    ports:
+      - 80:80 # (app)
+      # - 10000:10000 # (hot reload)
+    volumes:
+      - ./sapper:/var/sapper
+    networks: [transcendence-network]
+    restart: always
+
+networks:
+    transcendence-network:
+        name: transcendence-network
+        driver: bridge
+
+volumes:
+    postgres-data:
+        name: postgres-data
+        driver: local
+        driver_opts:
+            type: none  
+            o: bind
+            device: ./postgres-data

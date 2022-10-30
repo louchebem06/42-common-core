@@ -1,0 +1,29 @@
+# Output
+dist
+sapper/__sapper__
+
+# Libs
+node_modules
+package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/*
+
+# OS
+.DS_Store
+
+# Data
+postgres-data
+nestjs/upload/images/*
+nestjs/upload/tmp/*
+!nestjs/upload/images/.gitkeep
+!nestjs/upload/tmp/.gitkeep
+
+# Env
+.env
+nestjs/ormconfig.json

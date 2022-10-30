@@ -1,0 +1,15 @@
+FROM node:current-alpine
+
+RUN apk add tzdata
+RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
+
+# (App)
+EXPOSE 80
+# (Hot reload)
+# EXPOSE 10000
+
+WORKDIR	/var/sapper
+
+USER node
+
+ENTRYPOINT	npm i && npm run build && npm run start
