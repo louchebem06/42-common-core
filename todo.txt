@@ -4,4 +4,4 @@
 09-minishell:
 	- fix lib readline
 13-webserv:
-	- fix buildß
+	- fix build
