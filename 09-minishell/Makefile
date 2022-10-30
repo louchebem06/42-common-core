@@ -116,7 +116,7 @@ CFLAGS  			= -Wall -Wextra -Werror
 RM					= rm -rf
 MAKE_EXT			= @make -s --no-print-directory -C
 LIBS				= -L ./libft -lft -lreadline
-LIBS_MAC			= -L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/
+LIBS_MAC			= ${shell brew info readline | grep LDFLAGS | cut -c19- | rev | cut -c2- | rev}
 
 HISTORY_FILE		= $(HOME)/.minishell_history
 UNAME_S				= $(shell uname -s)

@@ -1,7 +1,5 @@
 04-ft_server:
 	- FIX certificat SSL
 	- ADD in file repo CV-42Project
-09-minishell:
-	- fix lib readline
 13-webserv:
 	- fix build
